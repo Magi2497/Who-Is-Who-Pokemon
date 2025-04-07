@@ -15,44 +15,34 @@
     <!-- Centra todo el contenido -->
 
     <!-- Boton que activa el pop up -->
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       Inicio
-    </button>
+    </button> -->
 
-    <!-- Pop up -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-      aria-labelledby="staticBackdropLabel">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-center w-100 " id="staticBackdropLabel">Instrucciones</h5>
+    <div id="startMenu" class="py-3 d-flex flex-column align-items-center">
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde repudiandae, consequatur accusantium facilis,
+        praesentium ab nobis adipisci deleniti nihil iste quisquam beatae iure ad. Soluta aperiam similique ratione
+        incidunt accusamus?</p>
+      <form class="needs-validation" novalidate>
+        <select class="form-select" aria-label="Default select example" required>
+          <option selected disabled value>Elige un nivel de dificultad</option>
+          <option value="easy">Fácil</option>
+          <option value="normal">Normal</option>
+          <option value="hard">Difícil</option>
+        </select>
+        <div class="invalid-feedback">
+          porfavor elige una dificultad
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
 
-          </div>
-          <div class="modal-body text-center">
-            Hola! esto es un placeholder elige entre 3 niveles de dificultad, segun el nivel que elijas va a variar el
-            numero de vidas, pokemons a elegir tiempo y numero de preguntas disponibles </div>
-
-          <form class="needs-validation" novalidate>
-            <select class="form-select" aria-label="Default select example" required>
-              <option selected disabled value>Elige un nivel de dificultad</option>
-              <option value="easy">Fácil</option>
-              <option value="normal">Normal</option>
-              <option value="hard">Difícil</option>
-            </select>
-            <div class="invalid-feedback">
-              porfavor elige una dificultad
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-
-            </div>
-
-          </form>
+          <button type="submit" class="btn btn-primary">Submit</button>
 
         </div>
-      </div>
+
+      </form>
+
     </div>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
