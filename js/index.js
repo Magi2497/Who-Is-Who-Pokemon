@@ -3,7 +3,15 @@ let pokemons = [];
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
 // Función para obtener los datos de varios Pokémon
-async function getMultiplePokemons(numPokemons) {
+async function getMultiplePokemons(Dificultad) {
+  const numPokemons =
+    Dificultad === "easy" ? 12 : Dificultad === "normal" ? 24 : 48;
+
+  const numVidas = Dificultad === "easy" ? 8 : Dificultad === "normal" ? 6 : 3;
+
+  const numPreguntas =
+    Dificultad === "easy" ? 8 : Dificultad === "normal" ? 6 : 4;
+
   //limpiamos el array
   pokemons = [];
   // Hacemos un bucle para obtener los datos de los Pokémon
@@ -24,7 +32,7 @@ async function getMultiplePokemons(numPokemons) {
       pokemons.push(data);
 
       // Mostramos los datos en consola
-      console.log(data); // Muestra todos los datos del Pokémon
+      //console.log(data); // Muestra todos los datos del Pokémon
     } catch (error) {
       console.error("Error:", error);
     }
@@ -64,33 +72,27 @@ function initgame() {
   }
 }
 
-// <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-3 justify-content-center">
+//Funcion que activa la validacion de formularios con bootstrap
+(() => {
+  "use strict";
+  const forms = document.querySelectorAll(".needs-validation");
 
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/mewto.png" alt="mewtwo">
-// </div>
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/mewto.png" alt="mewtwo">
-// </div>
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/mewto.png" alt="mewtwo">
-// </div>
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/mewto.png" alt="mewtwo">
-// </div>
-// </div>
+  Array.from(forms).forEach((form) => {
+    form.addEventListener(
+      "submit",
+      (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          const dificultad = form.querySelector("select").value;
+          event.preventDefault(); // Evita envío si necesitas llamar tu función primero
+          getMultiplePokemons(dificultad); // tu función
+        }
 
-// <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-3 justify-content-center">
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/pikachu.png" alt="pikachu">
-// </div>
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/pikachu.png" alt="pikachu">
-// </div>
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/pikachu.png" alt="pikachu">
-// </div>
-// <div class="col d-flex justify-content-center">
-//   <img class="img-fluid" src="data/img/pikachu.png" alt="pikachu">
-// </div>
-// </div>
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
